@@ -1,0 +1,39 @@
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <div class="fadeIn first">
+      <img src="https://i.pinimg.com/originals/72/3d/0a/723d0af616b1fe7d5c7e56a3532be3cd.png" id="icon" alt="User Icon" />
+    </div>
+
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      
+      <h2 class="active">ユーザ登録</h2>
+      <div class="field">
+        <!--<%= f.label :name, "名前" %><br />-->
+        <%= f.text_field :name, class: "fadeIn second", id: "login", placeholder: "名前" %>
+      </div>
+      
+      <div class="field">
+        <!--<%= f.label :email, "メールアドレス" %><br />-->
+        <%= f.email_field :email, class: "fadeIn second", id: "login", placeholder: "メールアドレス" %>
+      </div>
+    
+      <div class="field">
+        <!--<%= f.label :password, "パスワード" %>-->
+        <%= f.password_field :password, class: "fadeIn third", id: "password", placeholder: "パスワード" %>
+      </div>
+    
+      <div class="field">
+        <!--<%= f.label :password_confirmation, "パスワード（確認）" %><br />-->
+        <%= f.password_field :password_confirmation, class: "fadeIn third", id: "password", placeholder: "パスワード（確認）" %>
+      </div>
+      
+      <%= render "devise/shared/error_messages", resource: resource %>
+      
+      <div class="actions">
+        <%= f.submit "登録", class: "fadeIn fourth" %>
+      </div>
+    
+    <% end %>
+  </div>
+</div>
+

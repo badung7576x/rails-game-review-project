@@ -10,6 +10,23 @@
   </head>
 
   <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+      
+      <a href="/" class="navbar-brand" >
+      <%= image_tag asset_url('https://www.upsieutoc.com/images/2020/12/01/logof846c437d8bcb633.png'), id: "logo" %>
+      </a>
+      
+      <div class="navbar-nav ml-auto">
+        <% if user_signed_in? %>
+          <span class="nav-link" style="color:#fff"> こんにちは <%= current_user.name %> </span>
+          <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link nav-link-color" %>
+        <% else %>
+          <%= link_to "ログイン", new_user_session_path, class: "nav-link nav-link-color"%>
+          <%= link_to "ユーザ登録" , new_user_registration_path, method: :get, class: "nav-link nav-link-color"%>
+        <% end %>
+      
+      </div>
+    </nav>
     <%= yield %>
   </body>
 </html>
