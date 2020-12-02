@@ -27,7 +27,13 @@
 <% @game.genres.each do |genre| %>
 <p><%= link_to  genre.name, genre %></p>
 <% end %>
-
+<div id="like-count">
+  <%= render 'games/likes', game: @game %>
+</div>
+<br/>
+<div id="like-link">
+  <%= render 'games/like_link', game: @game %>
+</div>
 <%= link_to 'Edit', edit_game_path(@game) %> |
 <%= link_to 'Back', games_path %> |
 <%= link_to 'Destroy', @game, method: :delete, data: { confirm: 'Are you sure?' } %>
