@@ -1,0 +1,11 @@
+<% @genres.each do |genre| %>
+<h3><%= genre.name %></h3>
+<% genre.games.each do |game| %>
+<p>
+  <%= link_to game.title, game %>
+</p>
+<%end%>
+<%end%>
+
+<%= link_to 'Add new game', new_game_path(@game), class:"new" %> <br>
+<%= link_to 'Add new genre', new_genre_path(@game), class:"new" %>

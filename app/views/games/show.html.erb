@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>表題:</strong>
+  <%= @game.title %>
+</p>
+
+<p>
+  <strong>記述:</strong>
+  <%= @game.detail %>
+</p>
+
+<p>
+  <strong>画像:</strong>
+  <% if @game.thumbnail.attached? %>
+  <br>
+  <%= image_tag @game.thumbnail, class: "image_tag" %>
+  <% end %>
+</p>
+
+<p>
+  <strong>評価:</strong>
+  <%= @game.rating %>
+</p>
+
+<p><strong>ジャンル:</strong> </p>
+<% @game.genres.each do |genre| %>
+<p><%= link_to  genre.name, genre %></p>
+<% end %>
+
+<%= link_to 'Edit', edit_game_path(@game) %> |
+<%= link_to 'Back', games_path %> |
+<%= link_to 'Destroy', @game, method: :delete, data: { confirm: 'Are you sure?' } %>
