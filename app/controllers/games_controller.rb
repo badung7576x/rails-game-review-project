@@ -1,6 +1,6 @@
 class GamesController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :edit, :destroy]
-  before_action :set_game, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:new, :edit, :destroy, :like]
+  before_action :set_game, only: [:show, :edit, :update, :destroy, :like]
   before_action :set_genres, except: [:show, :destroy]
   # GET /games
   # GET /games.json
@@ -60,6 +60,14 @@ class GamesController < ApplicationController
     respond_to do |format|
       format.html { redirect_to games_url, notice: 'Game was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+  
+  def like
+    if current_user.voted_for? @game 
+      @game.unliked_by current_user
+    else 
+      @game.liked_by current_user
     end
   end
 
